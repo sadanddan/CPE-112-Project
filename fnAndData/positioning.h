@@ -1,7 +1,3 @@
-#include <windows.h>
-#include <string.h>
-#include <stdio.h>
-
  /*Prints strings at center of window
  totalLines is only appilcable for first line
  If multiline string is needed to print,
@@ -9,12 +5,12 @@
  and make totalLines 0 for the following lines*/
 void centerPrint(char str[], int linesAfter, int totalLines) {
     CONSOLE_SCREEN_BUFFER_INFO csbi;
-    int x, y, i, lncent = strlen(str)/2, crrntypos = csbi.dwCursorPosition.Y;
+    int x, y, i, lncent = strlen(str)/2;
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
-    x = (csbi.dwMaximumWindowSize.X -1)/2;
-    y = (csbi.dwMaximumWindowSize.Y -1)/2;
+    x = (csbi.srWindow.Right -csbi.srWindow.Left +1)/2;
+    y = (csbi.srWindow.Bottom -csbi.srWindow.Top +1)/2;
 
-    if (totalLines > 0 && totalLines < csbi.dwMaximumWindowSize.Y -1) {
+    if (totalLines > 0 && totalLines < x*2) {
 		COORD c = {x -lncent, y -totalLines/2};
         SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
         printf("%s", str);
@@ -34,10 +30,21 @@ void centerPrint(char str[], int linesAfter, int totalLines) {
  use printf function for the following lines*/
 void bottomPrint(char str[], int linesAfter, int totalLines) {
     CONSOLE_SCREEN_BUFFER_INFO csbi;
-    int i;
+    int i, y;
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
-    COORD b = {0, csbi.dwMaximumWindowSize.Y -1 -totalLines};
+    y = csbi.srWindow.Bottom -csbi.srWindow.Left;
+    COORD b = {0, y -totalLines};
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), b);
     printf("%s", str);
     for (i = 1; i <= linesAfter; i++) printf("\n");
+}
+
+/*Sets the cursor position to the top*/
+void topp() {
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+    COORD back = {csbi.dwCursorPosition.X, csbi.dwCursorPosition.Y};
+    COORD t = {0, 0};
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), t);
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), back);
 }
