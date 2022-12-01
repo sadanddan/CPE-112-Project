@@ -1,0 +1,6 @@
+11/30/2022 Welcome to the CPE-112-Project wiki! Hey what is up everyone! I hope everyone is doing okay. This is the first day I am doing my project for my class, Programming Logic and Design 1. For my project, I need to make a program written in C where the user (me) needs to log-in with their username and password so that they can access their 10 chosen previous activities in the semester. The deadline for this project is on December 16, I hope I can make it on time. Wish me luck!!
+
+12/1/2022 Hey Guys, how are you all doing? For today, I have added a log-in system for my project. Our teacher instructed us to limit the user to 3 unsuccessful attempts but I made 5. I will probably change it later. I have also added a logo for my program as well making it more stylish (check it out! I only used text to ascii art lol). Another thing is I have also cut and pasted some codes from the main file (project.c) to other files so that it won't get cluttered up (You can see them in fnAndData folder). I will probably start coding for the 10 activities tomorrow.
+
+Thank you so much for reading! I hope you have a wonderful day!
+
