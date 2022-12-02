@@ -4,3 +4,6 @@
 
 Thank you so much for reading! I hope you have a wonderful day!
 
+12/2/2022 Hey everyone! I have updated my project again. For today's changes I have coded my first activity. Only nine left! Also I have worked a little bit on the login system. This time. when the unsuccessful attempts exceeds to 5 attemps the program automatically exits but if the log-in is successful within the five attempts it will lead you the the activity list. Though I have not added the first activity. I will probably do it later. I am also thinking of a loading bar but so much much for today. I have many ahead!
+
+Thank ya'll for your support! Have a gread day!
