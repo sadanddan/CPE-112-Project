@@ -39,12 +39,21 @@ void bottomPrint(char str[], int linesAfter, int totalLines) {
     for (i = 1; i <= linesAfter; i++) printf("\n");
 }
 
-/*Sets the cursor position to the top*/
-void topp() {
+void topCenterPrint(char str[], int linesAfter, int linesBefore) {
     CONSOLE_SCREEN_BUFFER_INFO csbi;
+    int x, y, i;
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
-    COORD back = {csbi.dwCursorPosition.X, csbi.dwCursorPosition.Y};
-    COORD t = {0, 0};
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), t);
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), back);
+    x = (csbi.srWindow.Right -csbi.srWindow.Left +1)/2 -strlen(str)/2;
+    y = 0;
+    if (linesBefore) {
+        COORD c = {x, y +linesBefore};
+        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
+        printf("%s", str);
+        for (i = 1; i <= linesAfter; i++) printf("\n");
+        return;
+    }
+    COORD c = {x, csbi.dwCursorPosition.Y};
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
+    printf("%s", str);
+    for (i = 1; i <= linesAfter; i++) printf("\n");
 }
