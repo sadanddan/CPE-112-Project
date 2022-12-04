@@ -22,7 +22,7 @@ void act1() {
     printf("Enter an Integer Number: ");
     scanf("%lld", &num);
     while (num) {
-        if (i < 3) printf("%s's Place: %d\n", digitNames[i%3], name100[i/3], num%10);
+        if (i < 3) printf("%s's Place: %d\n", digitNames[i%3], num%10);
         else printf("%s-%s's Place: %d\n", digitNames[i%3], name100[i/3], num%10);
         i++;
         num /= 10;
