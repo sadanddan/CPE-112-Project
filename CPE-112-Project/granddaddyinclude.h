@@ -1,0 +1,10 @@
+#include <stdio.h>
+#include <string.h>
+#include <windows.h>
+#include <math.h>
+#include <conio.h>
+#include <ctype.h>
+#include "actagain.h"
+#include "activities/activities.h"
+#include "fnAndData/fnAndData.h"
+#include "actsMenu.h"
